@@ -42,7 +42,7 @@ Rapid中文文档：[http://rapidjson.org/zh-cn](http://rapidjson.org/zh-cn)
 
 关于流的基本要求，这里参照RapidJSON库的实现方式，具体如上图，该头文件包含的内容如下：
 
-![image-20200210173136881](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20200210173136881.png)
+![image-20200210173136881](https://github.com/z472421519/ZJSON-JSON-/blob/master/Picture/ZJSON_Encoding.PNG)
 
 ## 二、ZJSON_Encoding
 
