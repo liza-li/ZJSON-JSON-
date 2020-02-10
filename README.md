@@ -52,7 +52,7 @@ Rapid中文文档：[http://rapidjson.org/zh-cn](http://rapidjson.org/zh-cn)
 
 我们要是实现的库包含多种编码，具体如下：每种编码都包含上述函数（如果不需要调用也会有空实现）
 
-![image-20200210174126543](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20200210174126543.png)
+![image-20200210174126543](https://github.com/z472421519/ZJSON-JSON-/blob/master/Picture/ZJSON_Encoding.PNG)
 
 ## 三、ZJSON_Stack.h
 
