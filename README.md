@@ -63,3 +63,4 @@ Rapid中文文档：[http://rapidjson.org/zh-cn](http://rapidjson.org/zh-cn)
 ## 六、ZJSON_Writer.h
 
 ## 七、ZJSON_Document.h
+简单实现了BasicValue类用来表示JSON的值，BasicDocument类用来保存JSON，从而生成DOM树。DOM中包含一个Parse函数，通过调用Reader中的Parse将值保存为BasicValue返回给DOM。
