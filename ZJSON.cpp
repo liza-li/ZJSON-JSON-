@@ -1,4 +1,7 @@
-﻿#include <ZJSON_Stream.h>
+﻿#include <ZJSON.h>
+#include <ZJSON_Stream.h>
+#include <ZJSON_Document.h>
+
 
 template <typename TestStream>
 void Test(TestStream& stream)
@@ -26,13 +29,13 @@ void Test2(FileReadStream<char>& file_is)
 		s1++;
 	std::cout << static_cast<size_t>(s1 - s) << std::endl;*/
 	while (file_is.Peek() != '\0')
-	{
 		std::cout << file_is.Take() << std::endl;
-		getchar();
-	}
 }
 int main()
 {
+	///////////////////////////////////////
+	//流测试：
+#if Stream_Test
 	char s[10];
 	std::cin >> s;
 	InStream<char*, char> test1(s);
@@ -53,4 +56,17 @@ int main()
 	FileReadStream<char> file_is(fp);
 	Test<FileReadStream<char>>(file_is);
 	Test2(file_is);
+#endif
+	///////////////////////////////////////
+	//解析+DOM测试
+#if Parse_Test
+	FILE* fp;
+	fp = fopen("JSON1.txt", "r");
+	FileReadStream<char> file_is(fp);
+	BasicDocument<FileReadStream<char>, char> basic_value(file_is);
+	basic_value.template Parse<>();
+	basic_value.TypePut();
+	//basic_value.TT();
+#endif
+
 }
