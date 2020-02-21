@@ -57,7 +57,7 @@ Rapid中文文档：[http://rapidjson.org/zh-cn](http://rapidjson.org/zh-cn)
 ## 三、ZJSON_Stack.h
 
 ZJSON_Stack.h利用C++的模板类，每次压入栈的时候传入类型，从而使得栈顶指针根据压入的内容大小进行移动，在栈空间不足时通过栈对应分配器的Realloc函数将栈的大小扩展当前的1.5倍，从而实现了一个混合类型堆栈。
-	(```) 
+	
 	class Stack {
    	 Stack(Allocator* allocator, size_t stackCapacity);
     	~Stack();
@@ -75,7 +75,7 @@ ZJSON_Stack.h利用C++的模板类，每次压入栈的时候传入类型，从�
   	  size_t GetSize();
   	  size_t GetCapacity();
 	};
-	(```) 
+	
 注意：为了完全防止拷贝构造函数调用的可能性，这些函数都是返回指针。
 
 同时考虑到多次调用需要大量的申请一块类似的内存空间，然后又释放掉，耗费时间。如果当前系统中有大量的内存碎片，并且我们申请的空间很大，甚至有可能失败。对此我们采用placement new（定位放置new），即在用户指定的内存位置上构建新的对象，这个构建过程不需要额外分配内存，只需要调用对象的构造函数即可。
@@ -85,7 +85,7 @@ ZJSON_Stack.h利用C++的模板类，每次压入栈的时候传入类型，从�
 
 Allocator（分配器）作用为申请内存以及内存的扩容，主要用在多类型堆栈的建立与扩容以及JSON值赋值时。
 一个基本的分配器需要实现三个功能：内存分配Malloc(),内存块重新划分Realloc(),以及释放内存快Free().以下为基本定义：
-	(```) 
+	
 	class CrtAllocator {
 	public:
 		static const bool kNeedFree = true;*//声明需要释放内存*
@@ -117,7 +117,7 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 		 	std::free(ptr);
 		}
 	};
-	(```) 
+	
 而在构建DOM树时我们需要重新设计一个DOM 的默认内存分配器MemoryAllocator，需要注意的是：**它只申请内存而不释放内存。**
 它将严格遵守以下步骤来申请内存：
 	1.如果可用，使用用户提供的缓冲区。
