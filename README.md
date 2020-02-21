@@ -56,6 +56,7 @@ Rapid中文文档：[http://rapidjson.org/zh-cn](http://rapidjson.org/zh-cn)
 
 ## 三、ZJSON_Stack.h
 ZJSON_Stack.h利用C++的模板类，每次压入栈的时候传入类型，从而使得栈顶指针根据压入的内容大小进行移动，在栈空间不足时通过栈对应分配器的Realloc函数将栈的大小扩展当前的1.5倍，从而实现了一个混合类型堆栈。
+
 class Stack {
     Stack(Allocator* allocator, size_t stackCapacity);
     ~Stack();
@@ -79,6 +80,7 @@ class Stack {
 ## 四、ZJSON_Allocator.h
 Allocator（分配器）作用为申请内存以及内存的扩容，主要用在多类型堆栈的建立与扩容以及JSON值赋值时。
 一个基本的分配器需要实现三个功能：内存分配Malloc(),内存块重新划分Realloc(),以及释放内存快Free().以下为基本定义：
+
 class CrtAllocator {
 public:
 	static const bool kNeedFree = true;//声明需要释放内存
