@@ -67,8 +67,8 @@ ZJSON_Stack.h利用C++的模板类，每次压入栈的时候传入类型，从�
     
    	 template<typename T> T* Push(size_t count = 1);
    	 template<typename T> T* Pop(size_t count);
-  	 template<typename T> T* Top(); *//返回最后一个入栈元素地址*
-   	 template<typename T> T* Bottom(); *//返回第一个入栈元素地址*
+  	 template<typename T> T* Top(); //返回最后一个入栈元素地址
+   	 template<typename T> T* Bottom(); //返回第一个入栈元素地址
 
   	  Allocator& GetAllocator();
   	  bool Empty() const;
@@ -88,9 +88,9 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 	
 	class CrtAllocator {
 	public:
-		static const bool kNeedFree = true;*//声明需要释放内存*
-	*// 申请内存块。*
-  	*// size为内存块的大小，以字节记。returns 指向内存块的指针。*
+		static const bool kNeedFree = true;//声明需要释放内存
+	// 申请内存块。
+  	// size为内存块的大小，以字节记。returns 指向内存块的指针。
 		void* Malloc(size_t size) {
 			if (size) {
 				return std::malloc(size);//大小不为0，申请空间
@@ -98,20 +98,20 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 			else
 				return NULL;
 		}
-	*// 调整内存块的大小。*
-	*//  oPtr为当前内存块的指针，允许空指针，osize为当前大小，以字节记。 newsize为新大小，以字节记。*
+	// 调整内存块的大小。
+	//  oPtr为当前内存块的指针，允许空指针，osize为当前大小，以字节记。 newsize为新大小，以字节记。
 		void* Realloc(void* oPtr, size_t osize, size_t newsize)
 		{
 			//(void)osize;
-			if (newsize==0)*//若新大小为0，释放内存*
+			if (newsize==0)//若新大小为0，释放内存
 			{
 				free(oPtr);
 				return NULL;
 			}
 			return std::realloc(oPtr, newsize);
 		}
-	*// 释放内存块。*
-	*//ptr 指向内存块的指针，允许空指针。*
+	// 释放内存块。
+	//ptr 指向内存块的指针，允许空指针。
 		static void Free(void* ptr)
 		{
 		 	std::free(ptr);
