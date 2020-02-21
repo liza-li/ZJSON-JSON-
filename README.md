@@ -89,6 +89,7 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 	class CrtAllocator {
 	public:
 		static const bool kNeedFree = true;//声明需要释放内存
+		
 	// 申请内存块。
   	// size为内存块的大小，以字节记。returns 指向内存块的指针。
 		void* Malloc(size_t size) {
@@ -98,6 +99,7 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 			else
 				return NULL;
 		}
+		
 	// 调整内存块的大小。
 	//  oPtr为当前内存块的指针，允许空指针，osize为当前大小，以字节记。 newsize为新大小，以字节记。
 		void* Realloc(void* oPtr, size_t osize, size_t newsize)
@@ -110,6 +112,7 @@ Allocator（分配器）作用为申请内存以及内存的扩容，主要用�
 			}
 			return std::realloc(oPtr, newsize);
 		}
+		
 	// 释放内存块。
 	//ptr 指向内存块的指针，允许空指针。
 		static void Free(void* ptr)
